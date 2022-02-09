@@ -1112,6 +1112,19 @@ function App() {
       headerClasses: "text-center",
       classes: "py-1",
       style: { fontSize: "12px" },
+      // formatter: (cellContent, row, idx) => {
+      //   return (
+      //     <input
+      //       className="form-control"
+      //       value={cellContent}
+      //       style={{ fontSize: "12px" }}
+      //       onChange={(e) => {
+      //         console.log(e);
+      //       }}
+      //     />
+      //   );
+      // },
+      sort: true,
     },
     {
       dataField: "last_name",
