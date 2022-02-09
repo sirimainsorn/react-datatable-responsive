@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import $ from "jquery";
 import "jquery/dist/jquery.min.js";
@@ -6,6 +6,9 @@ import "jquery/dist/jquery.min.js";
 import "datatables.net-bs4";
 import "datatables.net-dt/js/dataTables.dataTables";
 import "datatables.net-responsive";
+import "./index.css";
+import "./bootstrap.css";
+import "./dataTables.bootstrap4.min.css";
 
 function TableResponsive(props) {
   const { data, columns, id } = props;
@@ -16,8 +19,17 @@ function TableResponsive(props) {
     });
   }, [id]);
 
+  const { innerWidth: width, innerHeight: height } = window;
+  console.log(width, height);
+  let i = 0;
+  for (let index = 0; index < columns.length; index++) {
+    const element = columns[index];
+    i = i + parseInt(element.headerStyle.width.replace("vw", ""));
+    console.log(i);
+  }
+
   return (
-    <table id={id} className="display responsive nowrap table table-bordered table-striped" cellspacing="0" width="100%">
+    <table id={id} className="display responsive nowrap table table-bordered table-striped" cellSpacing="0" width="100%">
       <thead>
         <tr>
           {columns.map((item, index) => {
